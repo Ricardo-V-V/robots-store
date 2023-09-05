@@ -1,0 +1,22 @@
+{
+	"env": {
+		"browser": true,
+		"es2021": true
+	},
+	"extends": [
+		"react-app",
+		"airbnb",
+		"plugin:jsx-a11y/recommended",
+		"prettier",
+		"plugin:react/jsx-runtime"
+	],
+	"plugins": ["jsx-a11y", "prettier"],
+	"rules": {
+		"semi": ["error", "never"],
+		"linebreak-style": 0,
+		"indent": ["error", "tab", { "ignoredNodes": ["TemplateLiteral"] }],
+		"react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+		"arrow-spacing": ["error", { "before": true, "after": true }],
+		"no-trailing-spaces": ["error", { "ignoreComments": true }]
+	}
+}
