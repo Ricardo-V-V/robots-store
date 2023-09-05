@@ -36,10 +36,12 @@
     ]
   },
   "devDependencies": {
+    "bootstrap": "^5.3.1",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-jsx-a11y": "^6.7.1",
     "eslint-plugin-prettier": "^5.0.0",
-    "prettier": "^3.0.3"
+    "prettier": "^3.0.3",
+    "sass": "^1.66.1"
   }
 }
