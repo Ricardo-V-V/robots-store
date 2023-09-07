@@ -1,5 +1,16 @@
 // Override default variables before the import
-$body-bg: #000;
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap');
+$font-family-sans-serif: 'Rubik', sans-serif;
+$navbar-padding-y: 0.75rem;
+$dark: rgb(55, 63, 80);
+$primary: #fe696a;
+$secondary: #f3f5f9;
 
 // Import Bootstrap and its default variables
 @import '~bootstrap/scss/bootstrap.scss';
+
+//Global styles
+a {
+	transition: color 0.25s ease-in-out;
+	text-decoration: none;
+}

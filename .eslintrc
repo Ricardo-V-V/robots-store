@@ -15,6 +15,7 @@
 		"semi": ["error", "never"],
 		"linebreak-style": 0,
 		"indent": ["error", "tab", { "ignoredNodes": ["TemplateLiteral"] }],
+		"import/no-extraneous-dependencies": 0,
 		"react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
 		"arrow-spacing": ["error", { "before": true, "after": true }],
 		"no-trailing-spaces": ["error", { "ignoreComments": true }]
