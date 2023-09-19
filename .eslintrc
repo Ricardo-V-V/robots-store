@@ -14,9 +14,14 @@
 	"rules": {
 		"semi": ["error", "never"],
 		"linebreak-style": 0,
-		"indent": ["error", "tab", { "ignoredNodes": ["TemplateLiteral"] }],
+		"indent": [
+			"error",
+			"tab",
+			{ "ignoredNodes": ["TemplateLiteral", "SwitchCase"] }
+		],
 		"import/no-extraneous-dependencies": 0,
 		"react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+		"react/prop-types": 0,
 		"arrow-spacing": ["error", { "before": true, "after": true }],
 		"no-trailing-spaces": ["error", { "ignoreComments": true }]
 	}

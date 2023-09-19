@@ -1,3 +1,5 @@
+import ProductsGrid from '../components/productsGrid'
+
 export default function RobotsPage() {
 	return (
 		<section className='container'>
@@ -9,6 +11,7 @@ export default function RobotsPage() {
 					</a>
 				</div>
 			</div>
+			<ProductsGrid />
 		</section>
 	)
 }
