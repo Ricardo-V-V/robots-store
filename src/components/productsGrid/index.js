@@ -1,42 +1,34 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import Card from './Card'
 import { useStoreDispatch, useStore } from '../../context/StoreContext'
+import { getProducts } from '../../actions/actions'
 import './styles.scss'
 
 export default function ProductsGrid() {
-	const [loading, setLoading] = useState(true)
-	const [error, setError] = useState(false)
 	const dispatch = useStoreDispatch()
 	const store = useStore()
-
+	console.log(store)
 	useEffect(() => {
-		fetch('https://dummyjson.com/products')
-			.then(res => res.json())
-			.then(data => {
-				dispatch({ productsList: data.products, type: 'GET_PRODUCTS' })
-			})
-			.catch(() => {
-				setError(true)
-			})
-			.finally(setLoading(false))
-		// eslint-disable-next-line
+		getProducts(dispatch)
 	}, [])
 
 	const cards = store.productsList?.map(item => (
 		<div key={item.id}>
 			<Card
+				id={item.id}
 				title={item.title}
 				price={item.price}
 				images={item.images}
 				category={item.category}
+				isWished={item.isWished}
 			/>
 		</div>
 	))
 
 	return (
 		<div className='container-fluid d-flex flex-wrap align-items-stretch products-grid py-4'>
-			{loading && <div>Loading...</div>}
-			{error && <div>There is a problem fetching the data</div>}
+			{store.isLoading && <div>Loading...</div>}
+			{store.requestFailed && <div>There is a problem fetching the data</div>}
 			{cards}
 		</div>
 	)

@@ -1,8 +1,23 @@
-export default function Card({ title, price, images, category }) {
+import { useStoreDispatch, useStore } from '../../context/StoreContext'
+import { updateWishList } from '../../actions/actions'
+
+export default function Card({ title, price, images, category, id, isWished }) {
+	const store = useStore()
+	const dispatch = useStoreDispatch()
+	const handleWishListToggle = () => {
+		updateWishList(id, dispatch, store.productsList, store.wishList)
+	}
+	console.log(isWished)
 	return (
 		<div className='card' style={{ width: '18rem' }}>
 			<div className='card-img-box'>
-				<button className='bg-secondary card-btn-wishList' type='button'>
+				<button
+					className={`bg-secondary card-btn-wishList ${
+						isWished ? 'bg-dark' : 'bg-secondary'
+					}`}
+					type='button'
+					onClick={handleWishListToggle}
+				>
 					H
 				</button>
 				<a href='/'>

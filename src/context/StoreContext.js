@@ -13,20 +13,39 @@ export function useStore() {
 
 function StoreReducer(store, action) {
 	switch (action.type) {
-		case 'GET_PRODUCTS': {
+		case 'GET_PRODUCTS_SUCCESS': {
 			return {
 				...store,
+				isLoading: false,
+				requestFailed: false,
+				productsList: action.productsList,
+			}
+		}
+		case 'GET_PRODUCTS_FAILED': {
+			return {
+				...store,
+				requestFailed: true,
+				isLoading: false,
+			}
+		}
+		case 'UPDATE_WISHLIST': {
+			return {
+				...store,
+				wishList: action.wishList,
 				productsList: action.productsList,
 			}
 		}
 		default: {
-			console.log('default')
+			return { ...store }
 		}
 	}
 }
 
 const initialStore = {
 	productsList: [],
+	isLoading: true,
+	requestFailed: false,
+	wishList: [],
 	count: 0,
 }
 
