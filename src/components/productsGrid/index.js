@@ -5,14 +5,13 @@ import { getProducts } from '../../actions/actions'
 import './styles.scss'
 
 export default function ProductsGrid() {
-	const dispatch = useStoreDispatch()
 	const store = useStore()
-	console.log(store)
+	const dispatch = useStoreDispatch()
 	useEffect(() => {
 		getProducts(dispatch)
-	}, [])
+	}, [dispatch])
 
-	const cards = store.productsList?.map(item => (
+	const cards = store.productsList.map(item => (
 		<div key={item.id}>
 			<Card
 				id={item.id}

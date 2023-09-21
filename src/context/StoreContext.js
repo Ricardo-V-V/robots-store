@@ -50,10 +50,10 @@ const initialStore = {
 }
 
 export function StoreProvider({ children }) {
-	const [products, dispatch] = useReducer(StoreReducer, initialStore)
+	const [store, dispatch] = useReducer(StoreReducer, initialStore)
 
 	return (
-		<StoreContext.Provider value={products}>
+		<StoreContext.Provider value={store}>
 			<StoreDispatchContext.Provider value={dispatch}>
 				{children}
 			</StoreDispatchContext.Provider>

@@ -25,7 +25,7 @@ const updateWishList = (id, dispatch, productsList, wishList) => {
 			if (product.id !== id) {
 				return product
 			}
-			return { ...product, isWhished: true }
+			return { ...product, isWished: true }
 		})
 	} else {
 		newWishList.splice(index, 1)
@@ -33,7 +33,7 @@ const updateWishList = (id, dispatch, productsList, wishList) => {
 			if (product.id !== id) {
 				return product
 			}
-			return { ...product, isWhished: false }
+			return { ...product, isWished: false }
 		})
 	}
 	dispatch({
