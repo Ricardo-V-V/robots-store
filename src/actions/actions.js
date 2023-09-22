@@ -14,26 +14,26 @@ const getProducts = dispatch => {
 		})
 }
 
-const updateWishList = (id, dispatch, productsList, wishList) => {
+const updateWishList = (product, dispatch, productsList, wishList) => {
 	const newWishList = [...wishList]
 	let newProductsList
 
-	const index = newWishList.indexOf(id)
+	const index = newWishList.findIndex(item => item.id === product.id)
 	if (index === -1) {
-		newWishList.push(id)
-		newProductsList = productsList.map(product => {
-			if (product.id !== id) {
-				return product
+		newWishList.push({ ...product, isWished: true })
+		newProductsList = productsList.map(item => {
+			if (item.id !== product.id) {
+				return item
 			}
-			return { ...product, isWished: true }
+			return { ...item, isWished: true }
 		})
 	} else {
 		newWishList.splice(index, 1)
-		newProductsList = productsList.map(product => {
-			if (product.id !== id) {
-				return product
+		newProductsList = productsList.map(item => {
+			if (item.id !== product.id) {
+				return item
 			}
-			return { ...product, isWished: false }
+			return { ...item, isWished: false }
 		})
 	}
 	dispatch({

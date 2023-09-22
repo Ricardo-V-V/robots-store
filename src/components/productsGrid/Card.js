@@ -1,18 +1,12 @@
 import { useStoreDispatch, useStore } from '../../context/StoreContext'
 import { updateWishList } from '../../actions/actions'
 
-export default function Card({
-	title,
-	price,
-	images,
-	category,
-	id,
-	isWished = false,
-}) {
+export default function Card({ product }) {
+	const { images, title, isWished, category, price } = product
 	const store = useStore()
 	const dispatch = useStoreDispatch()
 	const handleWishListToggle = () => {
-		updateWishList(id, dispatch, store.productsList, store.wishList)
+		updateWishList(product, dispatch, store.productsList, store.wishList)
 	}
 	return (
 		<div className='card' style={{ width: '18rem' }}>
@@ -27,7 +21,7 @@ export default function Card({
 					H
 				</button>
 				<a href='/'>
-					<img src={images[0]} className='card-img' alt={title} />
+					<img src={images && images[0]} className='card-img' alt={title} />
 				</a>
 			</div>
 			<div className='card-body'>
