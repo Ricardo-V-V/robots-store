@@ -1,13 +1,25 @@
 import { useStoreDispatch, useStore } from '../../context/StoreContext'
-import { updateWishList } from '../../actions/actions'
+import { updateWishList, updateShoppingCart } from '../../actions/actions'
 
 export default function Card({ product }) {
 	const { images, title, isWished, category, price } = product
 	const store = useStore()
 	const dispatch = useStoreDispatch()
+
 	const handleWishListToggle = () => {
 		updateWishList(product, dispatch, store.productsList, store.wishList)
 	}
+	const handleAddToCart = () => {
+		updateShoppingCart(
+			product,
+			dispatch,
+			store.productsList,
+			store.wishList,
+			store.totalBuyQty,
+			store.totalPrice
+		)
+	}
+
 	return (
 		<div className='card' style={{ width: '18rem' }}>
 			<div className='card-img-box'>
@@ -32,9 +44,13 @@ export default function Card({ product }) {
 					<a href='/home'>{title}</a>
 				</h3>
 				<p className='text-accent'>${price}</p>
-				<a href='/' className='btn btn-primary'>
-					Go somewhere
-				</a>
+				<button
+					className='btn btn-primary'
+					type='button'
+					onClick={handleAddToCart}
+				>
+					Add to Cart
+				</button>
 			</div>
 		</div>
 	)

@@ -10,7 +10,7 @@ export default function ProductsGrid() {
 	useEffect(() => {
 		getProducts(dispatch)
 	}, [dispatch])
-	console.log(store.wishList)
+
 	const cards = store.productsList.map(product => (
 		<div key={product.id}>
 			<Card product={{ ...product }} />

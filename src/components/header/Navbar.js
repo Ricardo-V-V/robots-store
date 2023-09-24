@@ -1,4 +1,7 @@
+import { useStore } from '../../context/StoreContext'
+
 export default function NavBar() {
+	const store = useStore()
 	return (
 		<div className='container'>
 			<nav className='navbar navbar-light bg-white'>
@@ -19,11 +22,14 @@ export default function NavBar() {
 					</form>
 					<div className='navbar-tool'>
 						<a className='navbar-tool-icon-box bg-secondary' href='/'>
-							<span className='navbar-tool-label bg-primary'>4</span>
+							<span className='navbar-tool-label bg-primary'>
+								{store.totalBuyQty}
+							</span>
 							CA
 						</a>
 						<a className='navbar-tool-text' href='/'>
-							<small>My Cart</small>$1,247.00
+							<small>My Cart</small>
+							{`$${store.totalPrice}`}
 						</a>
 					</div>
 				</div>
