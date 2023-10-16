@@ -1,6 +1,6 @@
 import ProductsGrid from '../components/productsGrid'
 
-export default function RobotsPage() {
+export default function HomePage() {
 	return (
 		<section className='container'>
 			<div className='container-fluid d-flex flex-wrap justify-content-between align-items-center pt-1 border-bottom pb-4 mb-4'>

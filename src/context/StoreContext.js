@@ -19,6 +19,7 @@ function StoreReducer(store, action) {
 				isLoading: false,
 				requestFailed: false,
 				productsList: action.productsList,
+				success: true,
 			}
 		}
 		case 'GET_PRODUCTS_FAILED': {
@@ -58,6 +59,7 @@ const initialStore = {
 	shoppingCart: [],
 	totalBuyQty: 0,
 	totalPrice: 0,
+	success: false,
 }
 
 export function StoreProvider({ children }) {

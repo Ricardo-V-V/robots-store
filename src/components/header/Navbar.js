@@ -1,4 +1,6 @@
+import { Link } from 'react-router-dom'
 import { useStore } from '../../context/StoreContext'
+import CartIcon from '../icons/CartIcon'
 
 export default function NavBar() {
 	const store = useStore()
@@ -6,9 +8,9 @@ export default function NavBar() {
 		<div className='container'>
 			<nav className='navbar navbar-light bg-white'>
 				<div className='container-fluid'>
-					<a className='navbar-brand' href='/'>
+					<Link className='navbar-brand' to='/'>
 						Navbar
-					</a>
+					</Link>
 					<form className='d-none d-md-flex flex-grow-1 mx-3'>
 						<input
 							className='form-control me-2'
@@ -16,21 +18,21 @@ export default function NavBar() {
 							placeholder='Search'
 							aria-label='Search'
 						/>
-						<button className='btn btn-outline-success' type='submit'>
+						<button className='btn btn-outline-primary' type='submit'>
 							Search
 						</button>
 					</form>
 					<div className='navbar-tool'>
-						<a className='navbar-tool-icon-box bg-secondary' href='/'>
+						<Link className='navbar-tool-icon-box bg-secondary' to='/cart'>
 							<span className='navbar-tool-label bg-primary'>
 								{store.totalBuyQty}
 							</span>
-							CA
-						</a>
-						<a className='navbar-tool-text' href='/'>
+							<CartIcon />
+						</Link>
+						<Link className='navbar-tool-text' to='/cart'>
 							<small>My Cart</small>
 							{`$${store.totalPrice}`}
-						</a>
+						</Link>
 					</div>
 				</div>
 			</nav>

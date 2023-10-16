@@ -1,5 +1,6 @@
 import { useStoreDispatch, useStore } from '../../context/StoreContext'
 import { updateWishList, updateShoppingCart } from '../../actions/actions'
+import HeartIcon from '../icons/HeartIcon'
 
 export default function Card({ product }) {
 	const { images, title, isWished, category, price } = product
@@ -25,15 +26,22 @@ export default function Card({ product }) {
 			<div className='card-img-box'>
 				<button
 					className={`card-btn-wishList ${
-						isWished ? 'bg-dark' : 'bg-secondary'
+						isWished ? 'card-btn-wishList-selected' : 'bg-secondary'
 					}`}
 					type='button'
 					onClick={handleWishListToggle}
 				>
-					H
+					<HeartIcon />
 				</button>
 				<a href='/'>
-					<img src={images && images[0]} className='card-img' alt={title} />
+					<img
+						src={
+							(images && images[1]) ||
+							'https://placehold.co/150?text=Image+not+available'
+						}
+						className='card-img'
+						alt={title}
+					/>
 				</a>
 			</div>
 			<div className='card-body'>

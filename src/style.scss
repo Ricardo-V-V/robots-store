@@ -18,3 +18,13 @@ a {
 .text-accent {
 	color: $indigo-600;
 }
+
+#root {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+
+	& > section {
+		flex-grow: 1;
+	}
+}

@@ -54,5 +54,12 @@
 		border: none;
 		border-radius: 50%;
 		text-align: center;
+		&-selected {
+			background-color: var(--bs-dark);
+			color: var(--bs-primary);
+		}
+		&:hover {
+			color: var(--bs-primary);
+		}
 	}
 }

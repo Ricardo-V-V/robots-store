@@ -1,0 +1,27 @@
+.footer {
+	align-self: flex-end;
+	&-container {
+		padding-top: 2rem;
+	}
+	&-icons {
+		font-size: 1.875rem;
+		display: flex;
+		justify-content: center;
+		gap: 1rem;
+
+		& a {
+			color: var(--bs-body-color);
+		}
+
+		&_item {
+			max-width: 25px;
+		}
+		& a :hover {
+			color: var(--bs-primary);
+		}
+	}
+	&-copyright {
+		text-align: center;
+		font-weight: 500;
+	}
+}
