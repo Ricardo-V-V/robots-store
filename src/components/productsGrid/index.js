@@ -18,7 +18,6 @@ export default function ProductsGrid() {
 			<Card product={{ ...product }} />
 		</div>
 	))
-
 	return (
 		<div className='container-fluid d-flex flex-wrap align-items-stretch products-grid pt-4 pb-5'>
 			{store.isLoading && <div>Loading...</div>}

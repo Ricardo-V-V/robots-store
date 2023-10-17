@@ -1,0 +1,32 @@
+@use '../../mixins.scss' as a;
+
+.listItem {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	@include a.breakpoint(sm) {
+		flex-direction: row;
+	}
+
+	&-img {
+		width: 150px !important;
+		height: auto;
+		border-radius: 0;
+	}
+	&-title {
+		font-size: 1rem;
+		font-weight: 700;
+		color: var(--bs-body-color);
+		& a {
+			color: inherit;
+			&:hover {
+				transition: color 0.25s ease-in-out;
+				color: var(--bs-primary);
+			}
+		}
+	}
+
+	&-description {
+		font-size: 0.875rem;
+	}
+}
