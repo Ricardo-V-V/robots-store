@@ -36,11 +36,10 @@ function StoreReducer(store, action) {
 				productsList: action.productsList,
 			}
 		}
-		case 'UPDATE_SHOPPING_CART': {
+		case 'ADD_SHOPPING_CART': {
 			return {
 				...store,
 				shoppingCart: action.shoppingCart,
-				productsList: action.productsList,
 				totalBuyQty: action.totalBuyQty,
 				totalPrice: action.totalPrice,
 			}

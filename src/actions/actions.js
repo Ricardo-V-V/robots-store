@@ -36,47 +36,40 @@ const updateWishList = (product, dispatch, productsList, wishList) => {
 	})
 }
 
-const updateShoppingCart = (
+const addShoppingCart = (
 	product,
 	dispatch,
-	productsList,
 	shoppingCart,
 	totalBuyQty,
 	totalPrice
 ) => {
 	const newShoppingCart = [...shoppingCart]
-	const newProductsList = [...productsList]
 	const cartIndex = newShoppingCart.findIndex(item => item.id === product.id)
-	const productListIndex = newProductsList.findIndex(
-		item => item.id === product.id
-	)
 
-	const newProduct = { ...product, buyQty: (+product.buyQty || 0) + 1 }
+	const newProduct = { ...product }
 	const newTotalBuyQty = totalBuyQty + 1
 	const newTotalPrice = totalPrice + product.price
-
 	if (cartIndex === -1) {
 		newShoppingCart.push({
 			...newProduct,
+			buyQty: 1,
 		})
 	} else {
-		newShoppingCart[cartIndex] = { ...newProduct }
-		if (newShoppingCart[cartIndex].buyQty === 0) {
-			newShoppingCart.splice(cartIndex, 1)
+		newShoppingCart[cartIndex] = {
+			...newProduct,
+			buyQty: newShoppingCart[cartIndex].buyQty + 1,
 		}
-	}
-
-	newProductsList[productListIndex] = {
-		...newProduct,
+		/* 	if (newShoppingCart[cartIndex].buyQty === 0) {
+			newShoppingCart.splice(cartIndex, 1)
+		} */
 	}
 
 	dispatch({
 		shoppingCart: newShoppingCart,
-		productsList: newProductsList,
 		totalBuyQty: newTotalBuyQty,
 		totalPrice: newTotalPrice,
-		type: 'UPDATE_SHOPPING_CART',
+		type: 'ADD_SHOPPING_CART',
 	})
 }
 
-export { getProducts, updateWishList, updateShoppingCart }
+export { getProducts, updateWishList, addShoppingCart }

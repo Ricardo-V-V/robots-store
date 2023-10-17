@@ -1,5 +1,5 @@
 import { useStoreDispatch, useStore } from '../../context/StoreContext'
-import { updateWishList, updateShoppingCart } from '../../actions/actions'
+import { updateWishList, addShoppingCart } from '../../actions/actions'
 import HeartIcon from '../icons/HeartIcon'
 
 export default function Card({ product }) {
@@ -11,11 +11,10 @@ export default function Card({ product }) {
 		updateWishList(product, dispatch, store.productsList, store.wishList)
 	}
 	const handleAddToCart = () => {
-		updateShoppingCart(
+		addShoppingCart(
 			product,
 			dispatch,
-			store.productsList,
-			store.wishList,
+			store.shoppingCart,
 			store.totalBuyQty,
 			store.totalPrice
 		)
