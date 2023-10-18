@@ -1,8 +1,11 @@
+import { Link } from 'react-router-dom'
+import ItemCounter from './ItemCounter'
+
 export default function ListItem({ product }) {
-	const { images, title, description, price } = product
+	const { id, images, title, description, price, buyQty } = product
 	return (
 		<div className='listItem border-bottom pt-3 pb-4'>
-			<a href='/'>
+			<Link to='/'>
 				<img
 					src={
 						(images && images[1]) ||
@@ -11,16 +14,17 @@ export default function ListItem({ product }) {
 					className='listItem-img'
 					alt={title}
 				/>
-			</a>
+			</Link>
 			<div className='listItem-info'>
 				<h3 className='listItem-title'>
-					<a href='/'>{title}</a>
+					<Link to='/'>{title}</Link>
 				</h3>
 				<p className='listItem-description'>{description}</p>
 				<p className='text-accent'>${price}</p>
 			</div>
-			<div>
-				<p>Quantity</p>
+			<div className='cart-counter-box'>
+				<p className='cart-counter-title'>Quantity</p>
+				<ItemCounter id={id} buyQty={buyQty} />
 			</div>
 		</div>
 	)

@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 export default function PageTitle({ title }) {
 	return (
 		<div className='bg-dark'>
@@ -7,9 +9,9 @@ export default function PageTitle({ title }) {
 				</div>
 				<div className='container-fluid d-flex justify-content-between align-items-center pt-4'>
 					<h3 className='h5 m-0'>Products</h3>
-					<a className='btn btn-outline-primary' href='shop-grid-ls.html'>
+					<Link className='btn btn-outline-primary' to='/'>
 						Continue shopping
-					</a>
+					</Link>
 				</div>
 			</div>
 		</div>

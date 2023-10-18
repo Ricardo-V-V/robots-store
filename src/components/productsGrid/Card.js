@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { useStoreDispatch, useStore } from '../../context/StoreContext'
 import { updateWishList, addShoppingCart } from '../../actions/actions'
 import HeartIcon from '../icons/HeartIcon'
@@ -32,7 +33,7 @@ export default function Card({ product }) {
 				>
 					<HeartIcon />
 				</button>
-				<a href='/'>
+				<Link to='/'>
 					<img
 						src={
 							(images && images[1]) ||
@@ -41,14 +42,14 @@ export default function Card({ product }) {
 						className='card-img'
 						alt={title}
 					/>
-				</a>
+				</Link>
 			</div>
 			<div className='card-body'>
-				<a href='/home' className='d-block text-muted card-category'>
+				<Link to='/' className='d-block text-muted card-category'>
 					{category}
-				</a>
+				</Link>
 				<h3 className='card-title'>
-					<a href='/home'>{title}</a>
+					<Link to='/'>{title}</Link>
 				</h3>
 				<p className='text-accent'>${price}</p>
 				<button
