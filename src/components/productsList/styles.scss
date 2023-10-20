@@ -13,6 +13,9 @@
 		height: auto;
 		border-radius: 0;
 	}
+	&-info {
+		flex-grow: 1;
+	}
 	&-title {
 		font-size: 1rem;
 		font-weight: 700;
@@ -34,8 +37,11 @@
 .cart-counter {
 	display: flex;
 	align-items: center;
+
 	&-box {
-		padding-left: 1.5rem;
+		@include a.breakpoint(sm) {
+			padding-left: 1.5rem;
+		}
 	}
 	&-title {
 		font-weight: 700;

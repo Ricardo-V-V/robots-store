@@ -3,9 +3,7 @@ import './styles.scss'
 
 export default function ProductsList({ list }) {
 	const itemsList = list.map(product => (
-		<div key={product.id}>
-			<ListItem product={{ ...product }} />
-		</div>
+		<ListItem product={{ ...product }} key={product.id} />
 	))
 
 	return (

@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useStoreDispatch, useStore } from '../../context/StoreContext'
-import { updateWishList, addShoppingCart } from '../../actions/actions'
+import { updateWishList, updateShoppingCart } from '../../actions/actions'
 import HeartIcon from '../icons/HeartIcon'
 
 export default function Card({ product }) {
@@ -12,7 +12,7 @@ export default function Card({ product }) {
 		updateWishList(product, dispatch, store.productsList, store.wishList)
 	}
 	const handleAddToCart = () => {
-		addShoppingCart(
+		updateShoppingCart(
 			product,
 			dispatch,
 			store.shoppingCart,

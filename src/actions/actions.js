@@ -36,19 +36,22 @@ const updateWishList = (product, dispatch, productsList, wishList) => {
 	})
 }
 
-const addShoppingCart = (
+const updateShoppingCart = (
 	product,
 	dispatch,
 	shoppingCart,
 	totalBuyQty,
-	totalPrice
+	totalPrice,
+	isRemove
 ) => {
 	const newShoppingCart = [...shoppingCart]
 	const cartIndex = newShoppingCart.findIndex(item => item.id === product.id)
 
 	const newProduct = { ...product }
-	const newTotalBuyQty = totalBuyQty + 1
-	const newTotalPrice = totalPrice + product.price
+	const newTotalBuyQty = isRemove ? totalBuyQty - 1 : totalBuyQty + 1
+	const newTotalPrice = isRemove
+		? totalPrice - product.price
+		: totalPrice + product.price
 	if (cartIndex === -1) {
 		newShoppingCart.push({
 			...newProduct,
@@ -57,19 +60,21 @@ const addShoppingCart = (
 	} else {
 		newShoppingCart[cartIndex] = {
 			...newProduct,
-			buyQty: newShoppingCart[cartIndex].buyQty + 1,
+			buyQty: isRemove
+				? newShoppingCart[cartIndex].buyQty - 1
+				: newShoppingCart[cartIndex].buyQty + 1,
 		}
-		/* 	if (newShoppingCart[cartIndex].buyQty === 0) {
+		if (newShoppingCart[cartIndex].buyQty === 0) {
 			newShoppingCart.splice(cartIndex, 1)
-		} */
+		}
 	}
 
 	dispatch({
 		shoppingCart: newShoppingCart,
 		totalBuyQty: newTotalBuyQty,
 		totalPrice: newTotalPrice,
-		type: 'ADD_SHOPPING_CART',
+		type: 'UPDATE_SHOPPING_CART',
 	})
 }
 
-export { getProducts, updateWishList, addShoppingCart }
+export { getProducts, updateWishList, updateShoppingCart }
