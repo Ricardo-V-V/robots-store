@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom'
 import ItemCounter from './ItemCounter'
+import RemoveBtn from './RemoveBtn'
 
-export default function ListItem({ product }) {
+export default function ListItem({ product, listType }) {
 	const { images, title, description, price } = product
 	return (
 		<div className='listItem border-bottom pt-3 pb-4 w-100'>
@@ -22,10 +23,14 @@ export default function ListItem({ product }) {
 				<p className='listItem-description'>{description}</p>
 				<p className='text-accent mb-0'>${price}</p>
 			</div>
-			<div className='cart-counter-box'>
-				<p className='cart-counter-title'>Quantity</p>
-				<ItemCounter product={product} />
-			</div>
+			{listType === 'WISHLIST' ? (
+				<RemoveBtn product={product} />
+			) : (
+				<div className='cart-counter-box'>
+					<p className='cart-counter-title'>Quantity</p>
+					<ItemCounter product={product} />
+				</div>
+			)}
 		</div>
 	)
 }

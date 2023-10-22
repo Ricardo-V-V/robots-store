@@ -1,9 +1,9 @@
 import ListItem from './ListItem'
 import './styles.scss'
 
-export default function ProductsList({ list }) {
+export default function ProductsList({ list, listType }) {
 	const itemsList = list.map(product => (
-		<ListItem product={{ ...product }} key={product.id} />
+		<ListItem product={{ ...product }} key={product.id} listType={listType} />
 	))
 
 	return (
