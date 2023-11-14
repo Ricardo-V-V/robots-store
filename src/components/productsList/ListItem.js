@@ -4,6 +4,7 @@ import RemoveBtn from './RemoveBtn'
 
 export default function ListItem({ product, listType }) {
 	const { images, title, description, price } = product
+
 	return (
 		<div className='listItem border-bottom pt-3 pb-4 w-100'>
 			<Link to='/'>

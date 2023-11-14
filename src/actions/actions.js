@@ -14,6 +14,29 @@ const getProducts = dispatch => {
 		})
 }
 
+const getCategories = dispatch => {
+	fetch('https://dummyjson.com/products/categories')
+		.then(res => res.json())
+		.then(data => {
+			dispatch({
+				categories: data,
+				type: 'GET_CATEGORIES_SUCCESS',
+			})
+		})
+		.catch(() => {
+			dispatch({
+				type: 'GET_CATEGORIES_FAILED',
+			})
+		})
+}
+
+const updateSelectedCategory = (dispatch, category) => {
+	dispatch({
+		type: 'UPDATE_SELECTED_CATEGORY',
+		category,
+	})
+}
+
 const updateWishList = (product, dispatch, productsList, wishList) => {
 	const newWishList = [...wishList]
 	const newProductsList = [...productsList]
@@ -77,4 +100,10 @@ const updateShoppingCart = (
 	})
 }
 
-export { getProducts, updateWishList, updateShoppingCart }
+export {
+	getProducts,
+	getCategories,
+	updateSelectedCategory,
+	updateWishList,
+	updateShoppingCart,
+}

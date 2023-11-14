@@ -4,6 +4,7 @@ import { useStore } from '../context/StoreContext'
 
 export default function WishPage() {
 	const store = useStore()
+
 	return (
 		<section>
 			<PageTitle title='Your Wishlist' />

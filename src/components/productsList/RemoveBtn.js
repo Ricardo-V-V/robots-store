@@ -4,6 +4,7 @@ import { updateWishList } from '../../actions/actions'
 export default function RemoveBtn({ product }) {
 	const store = useStore()
 	const dispatch = useStoreDispatch()
+
 	const handleRemove = () => {
 		updateWishList(product, dispatch, store.productsList, store.wishList)
 	}

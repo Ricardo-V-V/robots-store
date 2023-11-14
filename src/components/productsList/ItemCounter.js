@@ -16,6 +16,7 @@ export default function ItemCounter({ product }) {
 			e.target.value
 		)
 	}
+
 	return (
 		<div className='cart-counter'>
 			<button

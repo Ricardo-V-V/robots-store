@@ -5,6 +5,7 @@ import './styles.scss'
 
 export default function Footer() {
 	const year = new Date().getFullYear()
+
 	return (
 		<footer className='footer container'>
 			<div className='footer-container border-top'>

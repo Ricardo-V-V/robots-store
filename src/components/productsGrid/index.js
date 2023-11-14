@@ -1,19 +1,33 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import Card from './Card'
 import { useStoreDispatch, useStore } from '../../context/StoreContext'
 import { getProducts } from '../../actions/actions'
 import './styles.scss'
 
 export default function ProductsGrid() {
+	const [filteredList, setFilteredList] = useState([])
 	const store = useStore()
 	const dispatch = useStoreDispatch()
+
 	useEffect(() => {
 		if (!store.success) {
 			getProducts(dispatch)
 		}
 	}, [dispatch, store.success])
 
-	const cards = store.productsList.map(product => (
+	useEffect(() => {
+		if (store.selectedCategory === 'all') {
+			setFilteredList(store.productsList)
+		} else {
+			setFilteredList(
+				store.productsList.filter(
+					product => product.category === store.selectedCategory
+				)
+			)
+		}
+	}, [store.selectedCategory, store.productsList])
+
+	const cards = filteredList.map(product => (
 		<div key={product.id}>
 			<Card product={{ ...product }} />
 		</div>
@@ -23,6 +37,9 @@ export default function ProductsGrid() {
 			{store.isLoading && <div>Loading...</div>}
 			{store.requestFailed && <div>There is a problem fetching the data</div>}
 			{cards}
+			{filteredList.length === 0 && (
+				<div>There are no products available in this category</div>
+			)}
 		</div>
 	)
 }

@@ -4,6 +4,7 @@ import HeartIcon from '../icons/HeartIcon'
 
 export default function TopBar() {
 	const store = useStore()
+
 	return (
 		<div className='bg-dark'>
 			<div className='container'>

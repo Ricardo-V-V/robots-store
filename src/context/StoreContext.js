@@ -29,6 +29,28 @@ function StoreReducer(store, action) {
 				isLoading: false,
 			}
 		}
+		case 'GET_CATEGORIES_SUCCESS': {
+			return {
+				...store,
+				isLoadingCategories: false,
+				failedCategories: false,
+				categories: action.categories,
+				successCategories: true,
+			}
+		}
+		case 'GET_CATEGORIES_FAILED': {
+			return {
+				...store,
+				failedCategories: true,
+				isLoadingCategories: false,
+			}
+		}
+		case 'UPDATE_SELECTED_CATEGORY': {
+			return {
+				...store,
+				selectedCategory: action.category,
+			}
+		}
 		case 'UPDATE_WISHLIST': {
 			return {
 				...store,
@@ -59,6 +81,11 @@ const initialStore = {
 	totalBuyQty: 0,
 	totalPrice: 0,
 	success: false,
+	categories: [],
+	selectedCategory: 'all',
+	isLoadingCategories: true,
+	successCategories: false,
+	failedCategories: false,
 }
 
 export function StoreProvider({ children }) {
