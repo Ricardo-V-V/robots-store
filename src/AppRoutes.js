@@ -7,7 +7,7 @@ import WishPage from './pages/WishPage'
 
 export default function AppRoutes() {
 	return (
-		<Router>
+		<Router basename='/shopping-cart'>
 			<Routes>
 				<Route path='/' element={<DefaultLayout />}>
 					<Route index element={<HomePage />} />
