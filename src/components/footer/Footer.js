@@ -33,7 +33,10 @@ export default function Footer() {
 					</a>
 				</div>
 			</div>
-			<p className='footer-copyright'>© {year} Ricardo Villalobos.</p>
+			<p className='footer-copyright'>
+				© {year} <a href='https://ricardo-v-v.github.io'>Ricardo Villalobos</a>
+				.
+			</p>
 		</footer>
 	)
 }
